@@ -57,11 +57,11 @@ public class CardPage {
         expiredDatePass.shouldBe(Condition.visible);
     }
 
-    public void approved() {
+    public void shouldApproved() {
         approvedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
-    public void declined() {
+    public void shouldDeclined() {
         declinedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
