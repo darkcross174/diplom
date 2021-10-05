@@ -2,9 +2,8 @@ package ru.netology.Test;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import lombok.val;
 import org.junit.jupiter.api.*;
-import ru.netology.Data.DBHelper.DBHelper;
+import ru.netology.Data.DBHelper;
 import ru.netology.Data.DataHelper;
 import ru.netology.Page.CreditPage;
 import ru.netology.Page.TripPage;
