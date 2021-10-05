@@ -6,8 +6,8 @@ import lombok.val;
 import org.junit.jupiter.api.*;
 import ru.netology.Data.DBHelper.DBHelper;
 import ru.netology.Data.DataHelper;
-import ru.netology.Page.CreditPage.CreditPage;
-import ru.netology.Page.TripPage.TripPage;
+import ru.netology.Page.CreditPage;
+import ru.netology.Page.TripPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,10 +35,10 @@ public class TestCreditRequest {
     class shouldResponseBaseData {
         @Test
         void shouldSuccessWithValidCreditCard() {
-            val validCardInformation = DataHelper.getValidCardInformation();
-            val paymentPage = new TripPage();
+            var validCardInformation = DataHelper.getValidCardInformation();
+            var paymentPage = new TripPage();
             paymentPage.selectBuyByCreditCard();
-            val creditPage = new CreditPage();
+            var creditPage = new CreditPage();
             creditPage.creditCardFullInformation(validCardInformation);
             creditPage.approved();
             assertEquals("APPROVED", new DBHelper().getCreditRequestStatus());
@@ -48,10 +48,10 @@ public class TestCreditRequest {
 
         @Test
         void shouldSuccessWithInvalidCreditCard() {
-            val invalidCardInformation = DataHelper.getInvalidCardInformation();
-            val paymentPage = new TripPage();
+            var invalidCardInformation = DataHelper.getInvalidCardInformation();
+            var paymentPage = new TripPage();
             paymentPage.selectBuyByCreditCard();
-            val creditPage = new CreditPage();
+            var creditPage = new CreditPage();
             creditPage.creditCardFullInformation(invalidCardInformation);
             assertEquals("DECLINED", new DBHelper().getCreditRequestStatus());
             assertNull(new DBHelper().getCreditId());

@@ -1,4 +1,4 @@
-package ru.netology.Page.TripPage;
+package ru.netology.Page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;

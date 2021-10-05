@@ -1,11 +1,10 @@
-package ru.netology.Page.CreditPage;
+package ru.netology.Page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import lombok.val;
 import ru.netology.Data.DataHelper;
-import ru.netology.Page.TripPage.TripPage;
 
 import java.time.Duration;
 
@@ -54,28 +53,28 @@ public class CreditPage {
     }
 
     public void shouldValueFieldNumberCard() {
-        val fieldNumberCard = resultLinks.find(text("Номер карты")).parent();
+        var fieldNumberCard = resultLinks.find(text("Номер карты")).parent();
         fieldNumberCard.shouldHave(text("Неверный формат"));
     }
 
     public void shouldValueFieldMonth() {
-        val fieldNumberCard = resultLinks.find(text("Месяц")).parent();
+        var fieldNumberCard = resultLinks.find(text("Месяц")).parent();
         fieldNumberCard.shouldHave(text("Неверный формат"));
 
     }
 
     public void shouldValueFieldYear() {
-        val fieldNumberCard = resultLinks.find(text("Год")).parent();
+        var fieldNumberCard = resultLinks.find(text("Год")).parent();
         fieldNumberCard.shouldHave(text("Неверный формат"));
     }
 
     public void shouldValueFieldCodCVC() {
-        val fieldNumberCard = resultLinks.find(text("CVC/CVV")).parent();
+        var fieldNumberCard = resultLinks.find(text("CVC/CVV")).parent();
         fieldNumberCard.shouldHave(text("Неверный формат"));
     }
 
     public void shouldValueFieldHolder() {
-        val fieldNumberCard = resultLinks.find(text("Владелец")).parent();
+        var fieldNumberCard = resultLinks.find(text("Владелец")).parent();
         fieldNumberCard.shouldHave(text("Поле обязательно для заполнения"));
     }
 
@@ -96,10 +95,10 @@ public class CreditPage {
         expiredDatePass.shouldBe(Condition.visible);
     }
     public void shouldInvalidCardDataIfEmptyAllFieldsAndAfterFullInformationCard(){
-        val invalidCardInformation = DataHelper.getInvalidCardDataIfEmptyAllFields();
-        val paymentPage = new TripPage();
+        var invalidCardInformation = DataHelper.getInvalidCardDataIfEmptyAllFields();
+        var paymentPage = new TripPage();
         paymentPage.selectBuyByCreditCard();
-        val creditPage = new CreditPage();
+        var creditPage = new CreditPage();
         creditPage.creditCardFullInformation(invalidCardInformation);
         creditPage.shouldEmptyFieldNotification();
         creditPage.shouldImproperFormatNotification();
@@ -108,7 +107,7 @@ public class CreditPage {
         creditPage.shouldValueFieldMonth();
         creditPage.shouldValueFieldYear();
         creditPage.shouldValueFieldNumberCard();
-        val validCardInformation = DataHelper.getInvalidCardNumberIfOutOfDatabase();
+        var validCardInformation = DataHelper.getInvalidCardNumberIfOutOfDatabase();
         creditPage.creditCardFullInformation(validCardInformation);
 
     }
