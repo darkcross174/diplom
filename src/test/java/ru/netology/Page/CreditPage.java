@@ -44,11 +44,11 @@ public class CreditPage {
         proceedButton.click();
     }
 
-    public void approved() {
+    public void shouldBeApprovedLoanApplication() {
         approvedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
-    public void declined() {
+    public void shouldBeRejectedLoanApplication() {
         declinedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
