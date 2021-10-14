@@ -36,10 +36,9 @@ public class TestCreditRequest {
         void shouldSuccessWithValidCreditCard() {
             var validCardInformation = DataHelper.getValidCardInformation();
             var paymentPage = new TripPage();
-            paymentPage.selectBuyByCreditCard();
-            var creditPage = new CreditPage();
+            var creditPage = paymentPage.selectBuyByCreditCard();
             creditPage.creditCardFullInformation(validCardInformation);
-            creditPage.approved();
+            creditPage.shouldBeApprovedLoanApplication();
             assertEquals("APPROVED", new DBHelper().getCreditRequestStatus());
             assertNull(new DBHelper().getCreditId());
 
@@ -49,12 +48,11 @@ public class TestCreditRequest {
         void shouldSuccessWithInvalidCreditCard() {
             var invalidCardInformation = DataHelper.getInvalidCardInformation();
             var paymentPage = new TripPage();
-            paymentPage.selectBuyByCreditCard();
-            var creditPage = new CreditPage();
+            var creditPage = paymentPage.selectBuyByCreditCard();
             creditPage.creditCardFullInformation(invalidCardInformation);
             assertEquals("DECLINED", new DBHelper().getCreditRequestStatus());
             assertNull(new DBHelper().getCreditId());
-            creditPage.declined();
+            creditPage.shouldBeRejectedLoanApplication();
         }
     }
 }
