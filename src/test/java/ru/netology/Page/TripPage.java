@@ -24,7 +24,5 @@ public class TripPage {
     public CreditPage selectBuyByCreditCard() {
         buttonBuyCredit.click();
         return new CreditPage();
-//        return new CardPage();
-
     }
 }
